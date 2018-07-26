@@ -58,7 +58,7 @@ async def random_response(message):
 async def random_guess(message):
 	try:
 		result = await persist.random(db)
-		await client.send_message(message.channel, f'What command is this (without brackets)?\n {result.response}')
+		await client.send_message(message.channel, result.response)
 		msg = await client.wait_for_message(timeout=10, content=result.command)
 		if msg == None:
 			await client.send_message(message.channel, f'The answer was {result.command}')

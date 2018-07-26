@@ -60,9 +60,9 @@ async def random_guess(message):
 		await client.send_message(message.channel, f'What command is this (without brackets)?\n {result.response}')
 		msg = await client.wait_for_message(timeout=10, content=result.command)
 		if msg == None:
-			await client.send_message(f'The answer was {result.command}')
+			await client.send_message(message.channel, f'The answer was {result.command}')
 		else:
-			await client.send_message(f'{msg.author.display_name} is correct!')
+			await client.send_message(message.channel, f'{msg.author.display_name} is correct!')
 
 	except Exception as e:
 		print(repr(e))

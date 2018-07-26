@@ -26,10 +26,11 @@ async def on_message(message):
 		await top10(message)
 	elif message.content.startswith('[') and message.content[-1] == ']':
 		await respond_to_command(message)
-	elif message.content.startswith('^random'):
-		await random_response(message)
 	elif message.content.startswith('^randomguess'):
 		await random_guess(message)
+	elif message.content.startswith('^random'):
+		await random_response(message)
+	
 
 
 #@client.event

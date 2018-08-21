@@ -54,7 +54,7 @@ async def random_response(message):
 		await client.send_message(message.channel, result.response)
 	except Exception as e:
 		print(repr(e))
-'testing \n hello'
+
 async def random_guess(message):
 	try:
 		result = await persist.random(db)

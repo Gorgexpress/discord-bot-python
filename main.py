@@ -59,8 +59,9 @@ async def random_guess(message):
 	try:
 		result = await persist.random(db)
 		await message.channel.send(f'What command is this(without brackets)? \n {result.response}')
-		msg = await client.wait_for('message', check=lambda m: m.content == result.command, timeout=15)
-		if msg == None:
+		try:
+			msg = await client.wait_for('message', check=lambda m: m.content == result.command, timeout=15)
+		except asyncio.TimeoutError:
 			await message.channel.send(f'The answer was {result.command}')
 		else:
 			await message.channel.send(f'{msg.author.display_name} is correct!')

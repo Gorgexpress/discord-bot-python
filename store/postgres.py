@@ -4,7 +4,7 @@ import asyncpg
 
 class PGWrapper(DBLayer):
 	async def _connect(self):
-		return await asyncpg.connect(dsn = self._credentials.uri)
+		return await asyncpg.connect(dsn = self._credentials.uri, ssl='require')
 
 	async def execute(self, sql, *args):
 		conn = None
